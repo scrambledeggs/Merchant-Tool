@@ -1,0 +1,35 @@
+services:
+  # PHP Service
+  php:
+    build: 
+      dockerfile: ./php/Dockerfile
+      context: .
+
+
+  # Apache Service
+  apache:
+    build: 
+      context: .
+      dockerfile: ./apache/Dockerfile
+    depends_on:
+      - php
+    ports:
+      - 80:80
+
+  # MariaDB Service
+  mariadb:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: i9oGRg!LHTNbl3
+    volumes:
+      - ./mysql-data/:/var/lib/mysql
+
+  # phpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mariadb
+    depends_on:
+      - mariadb

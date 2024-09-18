@@ -1,7 +1,7 @@
 <?php
-$db_host = "localhost"; 
+$db_host = "mariadb"; 
 $db_user = "root"; 
-$db_password = ""; 
+$db_password = "i9oGRg!LHTNbl3"; 
 $db_name = "leadgen_db";
 
 $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);

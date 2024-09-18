@@ -5,7 +5,7 @@ services:
   php:
     build: './php_docker/'
     volumes:
-      - ./www/:/var/www/html/
+      - ./app/:/var/www/html/
 
   # Apache Service
   apache:
@@ -15,15 +15,15 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./www/:/var/www/html/
+      - ./app/:/var/www/html/
 
   # MariaDB Service
   mariadb:
     image: mariadb:10.11
     environment:
-      MYSQL_ROOT_PASSWORD: your_password
+      MYSQL_ROOT_PASSWORD: i9oGRg!LHTNbl3
     volumes:
-      - mysqldata:/var/lib/mysql
+      - ./mysql-data/:/var/lib/mysql
 
   # phpMyAdmin Service
   phpmyadmin:
@@ -34,7 +34,3 @@ services:
       PMA_HOST: mariadb
     depends_on:
       - mariadb
-
-# Volumes
-volumes:
-  mysqldata:

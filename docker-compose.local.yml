@@ -4,7 +4,8 @@ services:
     build: 
       dockerfile: ./php/Dockerfile
       context: .
-
+    volumes:
+      - ./app/:/var/www/html/
 
   # Apache Service
   apache:
@@ -14,7 +15,9 @@ services:
     depends_on:
       - php
     ports:
-      - 80:80
+      - "80:80"
+    volumes:
+      - ./app/:/var/www/html/
 
   # MariaDB Service
   mariadb:

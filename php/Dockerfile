@@ -9,3 +9,5 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql gd zip intl xml
 
 # Cleaning APT cache
 RUN apt clean
+
+COPY app/ /var/www/html/
